@@ -1,0 +1,23 @@
+.container {
+  background-color: #fff;
+  padding: 24px;
+  margin: 0 32px 16px 32px;
+  border-radius: 8px;
+}
+
+.container:last-child {
+  margin-bottom: 0;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #1b1f23;
+}
+
+.text {
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 16px;
+}
