@@ -1,0 +1,29 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  margin: 24px 32px;
+  border: 8px #fff;
+  background-color: #fff;
+}
+
+.header {
+  margin-bottom: 16px;
+
+  color: #1b1f23;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 32px;
+}
+
+.paragraph {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #1b1f23;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.paragraph:last-child {
+  margin-bottom: 0;
+}
