@@ -32,7 +32,10 @@ export const Counter = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={decrement}>
+      <button
+        className={count !== 0 ? styles.button : styles.buttonDisabled}
+        onClick={decrement}
+      >
         <svg
           width="12"
           height="12"
@@ -50,7 +53,10 @@ export const Counter = () => {
         </svg>
       </button>
       <span className={styles.counterText}>{count}</span>
-      <button className={styles.button} onClick={increment}>
+      <button
+        className={count !== 30 ? styles.button : styles.buttonDisabled}
+        onClick={increment}
+      >
         <svg
           width="12"
           height="12"
