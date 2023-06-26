@@ -8,7 +8,7 @@ import { MenuAccordion } from "@/widgets/menuAccordion/MenuAccordion";
 export const FaqPage = () => {
   return (
     <>
-      <Header></Header>
+      <Header />
       <main className={styles.container}>
         <MenuAccordion>
           <h2 className={styles.title}>Вопросы-ответы</h2>
@@ -30,7 +30,7 @@ export const FaqPage = () => {
           </MenuAccordion.Group>
         </MenuAccordion>
       </main>
-      <Footer></Footer>
+      <Footer />
     </>
   );
 };

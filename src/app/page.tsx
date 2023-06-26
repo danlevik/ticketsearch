@@ -11,9 +11,5 @@ import { MainPage } from "@/pages/main/MainPage";
 import { FilmPage } from "@/pages/film/FilmPage";
 
 export default function Home() {
-  return (
-    <>
-      <MainPage />
-    </>
-  );
+  return <MainPage />;
 }
