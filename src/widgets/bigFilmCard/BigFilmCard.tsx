@@ -2,50 +2,54 @@
 
 import Image from "next/image";
 import styles from "./styles.module.css";
-import img from "./placeholder_image.png";
+import default_photo from "./default_photo.svg";
+
 import { Counter } from "@/features/counter/Counter";
 
-export const BigFilmCard = () => {
+export const BigFilmCard = ({
+  title,
+  posterUrl = default_photo,
+  releaseYear,
+  description,
+  genre,
+  rating,
+  director,
+}) => {
   return (
     <section className={styles.container}>
-      <Image className={styles.img} src={img} alt="img" />
+      <Image
+        className={styles.img}
+        width={400}
+        height={500}
+        src={posterUrl}
+        alt="img"
+      />
       <div className={styles.card}>
         <div className={styles.cardHeader}>
-          <h2 className={styles.heading}>Властелин колец: Братство кольца</h2>
+          <h2 className={styles.heading}>{title}</h2>
           <Counter />
         </div>
         <div className={styles.infoContainer}>
           <div>
             <span className={styles.infoParam}>Жанр: </span>
-            <span className={styles.infoDescription}>Фэнтези</span>
+            <span className={styles.infoDescription}>{genre}</span>
           </div>
           <div>
             <span className={styles.infoParam}>Год выпуска: </span>
-            <span className={styles.infoDescription}>2001</span>
+            <span className={styles.infoDescription}>{releaseYear}</span>
           </div>
           <div>
             <span className={styles.infoParam}>Рейтинг: </span>
-            <span className={styles.infoDescription}>8</span>
+            <span className={styles.infoDescription}>{rating}</span>
           </div>
           <div>
             <span className={styles.infoParam}>Режиссер: </span>
-            <span className={styles.infoDescription}>Питер Джексон</span>
+            <span className={styles.infoDescription}>{director}</span>
           </div>
         </div>
         <div className={styles.descriptionContainer}>
           <h3 className={styles.descriptionHeading}>Описание</h3>
-          <p className={styles.description}>
-            Сказания о Средиземье — это хроника Великой войны за Кольцо,
-            длившейся не одну тысячу лет. Тот, кто владел Кольцом, получал
-            неограниченную власть, но был обязан служить злу. Тихая деревня, где
-            живут хоббиты. Придя на 111-й день рождения к своему старому другу
-            Бильбо Бэггинсу, волшебник Гэндальф начинает вести разговор о
-            кольце, которое Бильбо нашел много лет назад. Это кольцо
-            принадлежало когда-то темному властителю Средиземья Саурону, и оно
-            дает большую власть своему обладателю. Теперь Саурон хочет вернуть
-            себе власть над Средиземьем. Бильбо отдает Кольцо племяннику Фродо,
-            чтобы тот отнёс его к Роковой Горе и уничтожил.
-          </p>
+          <p className={styles.description}>{description}</p>
         </div>
       </div>
     </section>

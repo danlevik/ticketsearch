@@ -2,7 +2,7 @@
 
 import { BasketPage } from "@/pages/basket/BasketPage";
 
-export default function Home() {
+export default function Basket() {
   return (
     <>
       <BasketPage />

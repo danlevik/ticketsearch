@@ -39,6 +39,7 @@ export const MainPage = () => {
             .filter((obj) => obj.genre == genre || genre == "Не выбран")
             .map((obj) => (
               <FilmCard
+                id={obj.id}
                 key={obj.id}
                 title={obj.title}
                 posterUrl={obj.posterUrl}

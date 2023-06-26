@@ -1,8 +1,9 @@
 import styles from "./styles.module.css";
 import { Counter } from "@/features/counter/Counter";
 import Image from "next/image";
+import Link from "next/link";
 
-export const FilmCard = ({ title, posterUrl, genre }) => {
+export const FilmCard = ({ id, title, posterUrl, genre }) => {
   return (
     <article className={styles.card}>
       <Image
@@ -13,7 +14,9 @@ export const FilmCard = ({ title, posterUrl, genre }) => {
         alt="Picture"
       />
       <div className={styles.infoContainer}>
-        <h3 className={styles.heading}>{title}</h3>
+        <h3 className={styles.heading}>
+          <Link href={`film/${id}`}>{title}</Link>
+        </h3>
         <span className={styles.genre}>{genre}</span>
       </div>
       <Counter></Counter>

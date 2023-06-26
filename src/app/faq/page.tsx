@@ -2,7 +2,7 @@
 
 import { FaqPage } from "@/pages/faq/FaqPage";
 
-export default function Home() {
+export default function Faq() {
   return (
     <>
       <FaqPage />
