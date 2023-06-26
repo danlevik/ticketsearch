@@ -1,7 +1,6 @@
-const selectCartModule = (state) => state.cart;
+export const selectCartModule = (state) => state.cart;
 
-export const selectProductAmount = (state, id) =>
-  selectCartModule(state)[id] || 0;
+export const selectFilmAmount = (state, id) => selectCartModule(state)[id] || 0;
 
 export const selectAllAmount = (state) => {
   let amount = 0;
@@ -13,3 +12,6 @@ export const selectAllAmount = (state) => {
   }
   return amount;
 };
+
+export const selectFilmsInCart = (state) =>
+  Object.keys(selectCartModule(state));

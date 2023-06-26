@@ -4,7 +4,7 @@ import { useCallback, useState } from "react";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "@/redux/features/cart";
-import { selectProductAmount } from "@/redux/features/cart/selector";
+import { selectFilmAmount } from "@/redux/features/cart/selector";
 
 function useCount(initialValue: number = 0) {
   let [count, setCount] = useState(initialValue);
@@ -32,7 +32,7 @@ function useCount(initialValue: number = 0) {
 }
 
 export const Counter = ({ filmId }) => {
-  const amount = useSelector((state) => selectProductAmount(state, filmId));
+  const amount = useSelector((state) => selectFilmAmount(state, filmId));
   let { count, increment, decrement } = useCount(amount);
 
   const dispatch = useDispatch();

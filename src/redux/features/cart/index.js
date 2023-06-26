@@ -8,7 +8,9 @@ const cartSlice = createSlice({
   reducers: {
     increment: (state, { payload }) => {
       const count = state[payload] || 0;
-      state[payload] = count + 1;
+      if (count < 30) {
+        state[payload] = count + 1;
+      }
     },
     decrement: (state, { payload }) => {
       const count = state[payload];
@@ -23,6 +25,10 @@ const cartSlice = createSlice({
       }
 
       state[payload] = count - 1;
+    },
+    deleteFilm: (state, { payload }) => {
+      delete state[payload];
+      return;
     },
     reset: () => initialState,
   },
