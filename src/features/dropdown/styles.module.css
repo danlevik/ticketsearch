@@ -13,7 +13,17 @@
   align-items: center;
   align-self: stretch;
   border-radius: 8px;
-  border: 1px solid #f50;
+  border: 1px solid #e1e3e6;
+}
+
+.dropdownHeaderFocus {
+  cursor: pointer;
+  display: flex;
+  padding: 10px 16px;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #ff5500;
 }
 
 .dropdownHeaderText {
@@ -23,6 +33,16 @@
   flex: 1 0 0;
   font-size: 14px;
   line-height: 20px;
+}
+
+.dropdownHeaderTextInactive {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1 0 0;
+  font-size: 14px;
+  line-height: 20px;
+  color: #999fa6;
 }
 
 .dropdownHeaderButton {

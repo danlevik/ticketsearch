@@ -29,7 +29,7 @@ export const FiltersCard = ({
         <div className={styles.inputContainer}>
           <label className={styles.text}>Название</label>
           <input
-            className={styles.input}
+            className={naming == "" ? styles.inputInactive : styles.input}
             placeholder="Введите название"
             onChange={(e) => setNaming(e.target.value)}
             value={naming}
