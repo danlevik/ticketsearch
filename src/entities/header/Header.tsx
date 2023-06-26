@@ -7,7 +7,7 @@ export const Header = () => {
       <Link href="/" className={styles.logo}>
         Билетопоиск
       </Link>
-      <button className={styles.basketButton}>
+      <Link href="/basket" className={styles.basketButton}>
         <svg
           width="32"
           height="32"
@@ -20,7 +20,7 @@ export const Header = () => {
             fill="#fff"
           />
         </svg>
-      </button>
+      </Link>
     </header>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState } from "react";
 import styles from "./styles.module.css";
 
-const MenuContext = React.createContext(false);
+export const MenuContext = React.createContext(false);
 
 export const MenuAccordion = ({ children }) => {
   const [activeGroup, setActiveGroup] = useState();

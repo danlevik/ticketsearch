@@ -6,14 +6,22 @@ import { createPortal } from "react-dom";
 
 const DropdownContext = React.createContext(false);
 
-export const Dropdown = ({ children, label }) => {
+export const Dropdown = ({ children, label, choiceSender }) => {
   let [choice, setChoice] = useState("Не выбран");
   let [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(document.body);
 
-  const switchChoice = useCallback((text: string) => {
+  const switchChoice = useCallback((text: string, id = null) => {
+    console.log(text);
+
     setChoice(text);
     setIsOpen(false);
+
+    if (id != null) {
+      choiceSender(id);
+    } else {
+      choiceSender(text);
+    }
   }, []);
 
   return (
@@ -47,12 +55,12 @@ Dropdown.Menu = function DropdownMenu({ children }) {
   return <>{isOpen ? menu : undefined}</>;
 };
 
-Dropdown.Choice = function DropdownChoice({ text }) {
+Dropdown.Choice = function DropdownChoice({ text, id = null }) {
   let { choice, isOpen, switchChoice, switchOpen } =
     useContext(DropdownContext);
 
   return (
-    <span className={styles.choice} onClick={() => switchChoice(text)}>
+    <span className={styles.choice} onClick={() => switchChoice(text, id)}>
       {text}
     </span>
   );

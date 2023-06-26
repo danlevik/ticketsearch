@@ -1,8 +1,26 @@
 "use client";
+import {
+  useGetCinemasQuery,
+  useGetMoviesQuery,
+} from "@/redux/services/movieApi";
 import styles from "./styles.module.css";
 import { Dropdown } from "@/features/dropdown/Dropdown";
+import { useContext } from "react";
 
-export const FiltersCard = () => {
+export const FiltersCard = ({
+  naming,
+  setNaming,
+  genre,
+  setGenre,
+  theatre,
+  setTheatre,
+}) => {
+  const {
+    data: cinemas,
+    isLoading: cinemasIsLoading,
+    error: cinemasError,
+  } = useGetCinemasQuery();
+
   return (
     <div className={styles.filtersCard}>
       <h2 className={styles.heading}>Фильтр поиска</h2>
@@ -13,26 +31,27 @@ export const FiltersCard = () => {
           <input
             className={styles.input}
             placeholder="Введите название"
+            onChange={(e) => setNaming(e.target.value)}
+            value={naming}
           ></input>
         </div>
-        <Dropdown label="Жанр">
+        <Dropdown label="Жанр" choiceSender={setGenre}>
           <Dropdown.Header />
           <Dropdown.Menu>
             <Dropdown.Choice text="Не выбран" />
-            <Dropdown.Choice text="Боевик" />
-            <Dropdown.Choice text="Комедия" />
-            <Dropdown.Choice text="Фэнтези" />
-            <Dropdown.Choice text="Ужасы" />
+            <Dropdown.Choice text="action" />
+            <Dropdown.Choice text="comedy" />
+            <Dropdown.Choice text="fantasy" />
+            <Dropdown.Choice text="horror" />
           </Dropdown.Menu>
         </Dropdown>
-        <Dropdown label="Кинотеатр">
+        <Dropdown label="Кинотеатр" choiceSender={setTheatre}>
           <Dropdown.Header />
           <Dropdown.Menu>
             <Dropdown.Choice text="Не выбран" />
-            <Dropdown.Choice text="Восток" />
-            <Dropdown.Choice text="Запад" />
-            <Dropdown.Choice text="Юг" />
-            <Dropdown.Choice text="Север" />
+            {(cinemasIsLoading ? [] : cinemas).map((obj) => (
+              <Dropdown.Choice key={obj.id} id={obj.id} text={obj.name} />
+            ))}
           </Dropdown.Menu>
         </Dropdown>
       </div>

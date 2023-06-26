@@ -1,33 +1,53 @@
 "use client";
 
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { Header } from "@/entities/header/Header";
 import { Footer } from "@/entities/footer/Footer";
 import { FilmCard } from "@/widgets/filmCard/FilmCard";
 import { FiltersCard } from "@/widgets/filtersCard/FiltersCard";
+import { useDispatch } from "react-redux";
+import {
+  useGetCinemaMoviesQuery,
+  useGetMoviesQuery,
+} from "@/redux/services/movieApi";
 
 export const MainPage = () => {
+  const [naming, setNaming] = useState("");
+  const [genre, setGenre] = useState("Не выбран");
+  const [theatre, setTheatre] = useState("Не выбран");
+
+  const {
+    data: movies,
+    isLoading: moviesIsLoading,
+    error: moviesError,
+  } = useGetCinemaMoviesQuery(theatre);
+
   return (
     <>
       <Header />
       <main className={styles.layout}>
-        <FiltersCard />
+        <FiltersCard
+          naming={naming}
+          setNaming={setNaming}
+          setGenre={setGenre}
+          setTheatre={setTheatre}
+        />
         <div className={styles.catalogContainer}>
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
-          <FilmCard />
+          {(moviesIsLoading ? [] : movies)
+            .filter((obj) => obj.title.includes(naming))
+            .filter((obj) => obj.genre == genre || genre == "Не выбран")
+            .map((obj) => (
+              <FilmCard
+                key={obj.id}
+                title={obj.title}
+                posterUrl={obj.posterUrl}
+                genre={obj.genre}
+              />
+            ))}
         </div>
       </main>
+
       <Footer />
     </>
   );
