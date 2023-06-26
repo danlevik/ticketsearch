@@ -2,9 +2,13 @@
 
 import { useCallback, useState } from "react";
 import styles from "./styles.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "@/redux/features/cart";
+import { selectProductAmount } from "@/redux/features/cart/selector";
 
 function useCount(initialValue: number = 0) {
   let [count, setCount] = useState(initialValue);
+  // const dispatch = useDispatch();
 
   const decrement = useCallback(() => {
     setCount((currentCount) => {
@@ -27,14 +31,20 @@ function useCount(initialValue: number = 0) {
   return { count, decrement, increment };
 }
 
-export const Counter = () => {
-  let { count, increment, decrement } = useCount(0);
+export const Counter = ({ filmId }) => {
+  const amount = useSelector((state) => selectProductAmount(state, filmId));
+  let { count, increment, decrement } = useCount(amount);
+
+  const dispatch = useDispatch();
 
   return (
     <div className={styles.container}>
       <button
         className={count !== 0 ? styles.button : styles.buttonDisabled}
-        onClick={decrement}
+        onClick={() => {
+          decrement();
+          dispatch(cartActions.decrement(filmId));
+        }}
       >
         <svg
           width="12"
@@ -55,7 +65,10 @@ export const Counter = () => {
       <span className={styles.counterText}>{count}</span>
       <button
         className={count !== 30 ? styles.button : styles.buttonDisabled}
-        onClick={increment}
+        onClick={() => {
+          increment();
+          dispatch(cartActions.increment(filmId));
+        }}
       >
         <svg
           width="12"

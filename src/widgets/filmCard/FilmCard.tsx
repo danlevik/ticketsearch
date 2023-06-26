@@ -19,7 +19,7 @@ export const FilmCard = ({ id, title, posterUrl, genre }) => {
         </h3>
         <span className={styles.genre}>{genre}</span>
       </div>
-      <Counter></Counter>
+      <Counter filmId={id}></Counter>
     </article>
   );
 };

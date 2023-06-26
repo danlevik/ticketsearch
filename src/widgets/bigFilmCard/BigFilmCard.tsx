@@ -7,6 +7,7 @@ import default_photo from "./default_photo.svg";
 import { Counter } from "@/features/counter/Counter";
 
 export const BigFilmCard = ({
+  id,
   title,
   posterUrl = default_photo,
   releaseYear,
@@ -27,7 +28,7 @@ export const BigFilmCard = ({
       <div className={styles.card}>
         <div className={styles.cardHeader}>
           <h2 className={styles.heading}>{title}</h2>
-          <Counter />
+          <Counter filmId={id} />
         </div>
         <div className={styles.infoContainer}>
           <div>

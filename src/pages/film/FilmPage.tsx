@@ -29,6 +29,7 @@ export const FilmPage = ({ id }) => {
       <main className={styles.mainContainer}>
         {movieIsLoading ? null : (
           <BigFilmCard
+            id={movie.id}
             title={movie.title}
             releaseYear={movie.releaseYear}
             posterUrl={movie.posterUrl}
