@@ -4,12 +4,25 @@ import { Counter } from "@/features/counter/Counter";
 import Image from "next/image";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import { createPortal } from "react-dom";
+import { Modal } from "@/features/modal/Modal";
+import { useState } from "react";
 
 export const FilmCard = ({ id, title, posterUrl, genre, isBasket = false }) => {
-  const dispatch = useDispatch();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function openModal() {
+    setIsModalOpen(true);
+  }
+
+  const modal = createPortal(
+    <Modal setIsModalOpen={setIsModalOpen} filmId={id} />,
+    document.body
+  );
 
   return (
     <article className={isBasket ? styles.basketCard : styles.card}>
+      {isModalOpen ? modal : null}
       <Image
         className={styles.filmImage}
         src={posterUrl}
@@ -23,12 +36,9 @@ export const FilmCard = ({ id, title, posterUrl, genre, isBasket = false }) => {
         </h3>
         <span className={styles.genre}>{genre}</span>
       </div>
-      <Counter filmId={id}></Counter>
+      <Counter setIsModalOpen={setIsModalOpen} filmId={id}></Counter>
       {isBasket ? (
-        <button
-          onClick={() => dispatch(cartActions.deleteFilm(id))}
-          className={styles.removeButton}
-        >
+        <button onClick={() => openModal()} className={styles.removeButton}>
           <svg
             width="20"
             height="20"

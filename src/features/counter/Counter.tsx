@@ -1,49 +1,30 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "@/redux/features/cart";
 import { selectFilmAmount } from "@/redux/features/cart/selector";
 
-function useCount(initialValue: number = 0) {
-  let [count, setCount] = useState(initialValue);
-  // const dispatch = useDispatch();
-
-  const decrement = useCallback(() => {
-    setCount((currentCount) => {
-      if (currentCount > 0) {
-        return currentCount - 1;
-      }
-      return currentCount;
-    });
-  }, []);
-
-  const increment = useCallback(() => {
-    setCount((currentCount) => {
-      if (currentCount < 30) {
-        return currentCount + 1;
-      }
-      return currentCount;
-    });
-  }, []);
-
-  return { count, decrement, increment };
-}
-
-export const Counter = ({ filmId }) => {
+export const Counter = ({ filmId, setIsModalOpen }) => {
   const amount = useSelector((state) => selectFilmAmount(state, filmId));
-  let { count, increment, decrement } = useCount(amount);
 
   const dispatch = useDispatch();
+
+  function decrementCart() {
+    if (amount == 1) {
+      setIsModalOpen(true);
+    } else {
+      dispatch(cartActions.decrement(filmId));
+    }
+  }
 
   return (
     <div className={styles.container}>
       <button
-        className={count !== 0 ? styles.button : styles.buttonDisabled}
+        className={amount !== 0 ? styles.button : styles.buttonDisabled}
         onClick={() => {
-          decrement();
-          dispatch(cartActions.decrement(filmId));
+          decrementCart();
         }}
       >
         <svg
@@ -62,11 +43,10 @@ export const Counter = ({ filmId }) => {
           </g>
         </svg>
       </button>
-      <span className={styles.counterText}>{count}</span>
+      <span className={styles.counterText}>{amount}</span>
       <button
-        className={count !== 30 ? styles.button : styles.buttonDisabled}
+        className={amount !== 30 ? styles.button : styles.buttonDisabled}
         onClick={() => {
-          increment();
           dispatch(cartActions.increment(filmId));
         }}
       >
