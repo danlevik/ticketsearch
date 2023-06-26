@@ -11,10 +11,6 @@ export const Dropdown = ({ children, label }) => {
   let [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(document.body);
 
-  const switchOpen = useCallback(() => {
-    isOpen ? setIsOpen(false) : setIsOpen(true);
-  }, []);
-
   const switchChoice = useCallback((text: string) => {
     setChoice(text);
     setIsOpen(false);
@@ -22,7 +18,7 @@ export const Dropdown = ({ children, label }) => {
 
   return (
     <DropdownContext.Provider
-      value={{ choice, isOpen, menuRef, switchChoice, switchOpen }}
+      value={{ choice, isOpen, menuRef, switchChoice, setIsOpen }}
     >
       <div ref={menuRef} className={styles.dropdownContainer}>
         <label className={styles.text}>{label}</label>
@@ -33,9 +29,9 @@ export const Dropdown = ({ children, label }) => {
 };
 
 Dropdown.Header = function DropdownHeader() {
-  let { choice, switchOpen } = useContext(DropdownContext);
+  let { choice, setIsOpen, isOpen } = useContext(DropdownContext);
   return (
-    <div onClick={() => switchOpen()} className={styles.dropdownHeader}>
+    <div onClick={() => setIsOpen(!isOpen)} className={styles.dropdownHeader}>
       <span className={styles.dropdownHeaderText}>{choice}</span>
       <button className={styles.dropdownHeaderButton}>+</button>
     </div>
