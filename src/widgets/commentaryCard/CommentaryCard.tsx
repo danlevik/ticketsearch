@@ -10,13 +10,15 @@ export const CommentaryCard = ({
 }) => {
   return (
     <section className={styles.commentaryCard}>
-      <Image
-        className={styles.img}
-        width={400}
-        height={500}
-        src={avatar}
-        alt="img"
-      />
+      <div className={styles.imgContainer}>
+        <Image
+          className={styles.img}
+          width={400}
+          height={500}
+          src={avatar}
+          alt="img"
+        />
+      </div>
 
       <div className={styles.textContainer}>
         <div className={styles.headingContainer}>
