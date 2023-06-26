@@ -1,9 +1,12 @@
+import Link from "next/link";
 import styles from "./styles.module.css";
 
 export const Header = () => {
   return (
     <header className={styles.headerContainer}>
-      <p className={styles.logo}>Билетопоиск</p>
+      <Link href="/" className={styles.logo}>
+        Билетопоиск
+      </Link>
       <button className={styles.basketButton}>
         <svg
           width="32"

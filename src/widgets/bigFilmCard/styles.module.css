@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  padding: 24px;
+  gap: 32px;
+  margin: 108px 32px 0 32px;
+
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.img {
+  width: 400px;
+  height: 500px;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  align-self: stretch;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.infoParam {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: #1b1f23;
+}
+
+.infoDescription {
+  font-size: 20px;
+  line-height: 24px;
+  color: #1b1f23;
+}
+
+.descriptionContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.descriptionHeading {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 32px;
+  color: #1b1f23;
+}
+
+.description {
+  color: #1b1f23;
+  font-size: 16px;
+  line-height: 24px;
+}

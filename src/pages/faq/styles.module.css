@@ -1,5 +1,14 @@
+.container {
+  margin-top: 108px;
+}
+
 .title {
-  display: inline-block;
+  display: flex;
+  align-items: flex-start;
+  flex: 1 0 0;
+
+  border-radius: 8px;
+
   padding: 24px;
   margin: 16px 32px;
   background-color: #fff;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./styles.module.css";
 
 export const Footer = () => {
@@ -6,14 +7,14 @@ export const Footer = () => {
       <nav className={styles.navigation}>
         <ul className={styles.linkList}>
           <li className={styles.linkElement}>
-            <a className={styles.link} href="#">
+            <Link className={styles.link} href="/faq">
               Вопросы-ответы
-            </a>
+            </Link>
           </li>
           <li className={styles.linkElement}>
-            <a className={styles.link} href="#">
+            <Link className={styles.link} href="/about">
               О нас
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

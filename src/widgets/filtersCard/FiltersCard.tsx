@@ -6,6 +6,7 @@ export const FiltersCard = () => {
   return (
     <div className={styles.filtersCard}>
       <h2 className={styles.heading}>Фильтр поиска</h2>
+
       <div className={styles.filtersContainer}>
         <div className={styles.inputContainer}>
           <label className={styles.text}>Название</label>
