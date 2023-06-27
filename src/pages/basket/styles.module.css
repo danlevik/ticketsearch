@@ -3,4 +3,24 @@
   flex-direction: column;
   gap: 24px;
   margin: 108px 32px 0 32px;
+  min-height: 760px;
+}
+
+.summaryContainer {
+  margin-top: auto;
+  margin-bottom: 24px;
+  display: flex;
+  align-self: stretch;
+  padding: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 20px;
 }
