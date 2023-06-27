@@ -1,5 +1,3 @@
-"use client";
-
 import { Header } from "@/entities/header/Header";
 import styles from "./styles.module.css";
 import { Footer } from "@/entities/footer/Footer";
