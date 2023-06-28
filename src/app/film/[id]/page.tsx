@@ -1,7 +1,6 @@
 "use client";
 
-import { FilmPage } from "@/pages/film/FilmPage";
-import { useRouter } from "next/router";
+import { FilmPage } from "@/page/film/FilmPage";
 
 export default function Film({ params }) {
   return <FilmPage id={params.id} />;
