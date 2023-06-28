@@ -9,7 +9,12 @@ const DropdownContext = React.createContext(false);
 export const Dropdown = ({ children, label, choiceSender }) => {
   let [choice, setChoice] = useState("Не выбран");
   let [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(document.body);
+  let [isDomReady, setIsDomReady] = React.useState(false);
+  const menuRef = useRef();
+
+  React.useEffect(() => {
+    setIsDomReady(true);
+  }, []);
 
   const switchChoice = useCallback((text: string, id = null) => {
     console.log(text);
@@ -26,7 +31,7 @@ export const Dropdown = ({ children, label, choiceSender }) => {
 
   return (
     <DropdownContext.Provider
-      value={{ choice, isOpen, menuRef, switchChoice, setIsOpen }}
+      value={{ choice, isOpen, menuRef, switchChoice, setIsOpen, isDomReady }}
     >
       <div ref={menuRef} className={styles.dropdownContainer}>
         <label className={styles.text}>{label}</label>
@@ -94,10 +99,14 @@ Dropdown.Header = function DropdownHeader() {
 };
 
 Dropdown.Menu = function DropdownMenu({ children }) {
-  let { isOpen, menuRef } = useContext(DropdownContext);
-  const menu = createPortal(
-    <div className={styles.dropdownMenu}>{children}</div>,
-    menuRef.current
+  let { isOpen, menuRef, isDomReady } = useContext(DropdownContext);
+  const menu = isDomReady ? (
+    createPortal(
+      <div className={styles.dropdownMenu}>{children}</div>,
+      menuRef.current
+    )
+  ) : (
+    <div className={styles.dropdownMenu}>{children}</div>
   );
   return <>{isOpen ? menu : undefined}</>;
 };
