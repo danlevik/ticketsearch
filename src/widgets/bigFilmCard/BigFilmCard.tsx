@@ -5,6 +5,9 @@ import styles from "./styles.module.css";
 import default_photo from "./default_photo.svg";
 
 import { Counter } from "@/features/counter/Counter";
+import { useState } from "react";
+import { Modal } from "@/features/modal/Modal";
+import { createPortal } from "react-dom";
 
 export const BigFilmCard = ({
   id,
@@ -16,8 +19,16 @@ export const BigFilmCard = ({
   rating,
   director,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const modal = createPortal(
+    <Modal setIsModalOpen={setIsModalOpen} filmId={id} />,
+    document.body
+  );
   return (
     <section className={styles.container}>
+      {isModalOpen ? modal : null}
+
       <Image
         className={styles.img}
         width={400}
@@ -28,7 +39,7 @@ export const BigFilmCard = ({
       <div className={styles.card}>
         <div className={styles.cardHeader}>
           <h2 className={styles.heading}>{title}</h2>
-          <Counter filmId={id} />
+          <Counter setIsModalOpen={setIsModalOpen} filmId={id} />
         </div>
         <div className={styles.infoContainer}>
           <div>
