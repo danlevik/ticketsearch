@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 24px;
   margin: 108px 32px 0 32px;
-  min-height: 760px;
+  flex-grow: 1;
 }
 
 .summaryContainer {
