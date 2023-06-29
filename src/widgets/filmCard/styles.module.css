@@ -22,6 +22,7 @@
 .filmImage {
   width: 100px;
   height: 120px;
+  object-fit: cover;
   flex-shrink: 0;
   border-radius: 8px;
 }
