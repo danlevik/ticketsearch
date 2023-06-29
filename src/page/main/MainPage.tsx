@@ -27,12 +27,14 @@ export const MainPage = () => {
     <>
       <Header />
       <main className={styles.layout}>
-        <FiltersCard
-          naming={naming}
-          setNaming={setNaming}
-          setGenre={setGenre}
-          setTheatre={setTheatre}
-        />
+        <div className={styles.filtersCardContainer}>
+          <FiltersCard
+            naming={naming}
+            setNaming={setNaming}
+            setGenre={setGenre}
+            setTheatre={setTheatre}
+          />
+        </div>
         <div className={styles.catalogContainer}>
           {(moviesIsLoading ? [] : movies)
             .filter((obj) => obj.title.includes(naming))
